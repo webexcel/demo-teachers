@@ -1,0 +1,65 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button><ion-icon [ios]="'menu-sharp'" [md]="'menu-sharp'"></ion-icon></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'dashboard' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ 'dashboard' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+ 
+<!-- <img [src]="readimag"> -->
+  <div class="">
+    <div class="card-body card_body">
+      
+          <table class="table">
+            <thead>
+              <tr>
+                <td  rowspan="2">
+                  <ion-avatar class="dashboard_avatar"><img *ngIf="storage.get(item.ADNO+'img')" [src]="storage.get(item.ADNO+'img')"><img *ngIf="!storage.get(item.ADNO+'img')" src="../../assets/imgs/student.png"></ion-avatar>
+                </td>
+                <td >{{ 'class' | translate }} :<span class="bolFont"> {{item.CLASSSEC}} </span></td>
+              </tr>
+              <tr>
+                <td >{{ 'adno' | translate }}: <span class="bolFont">{{item.ADNO}} </span></td>
+              </tr>
+            </thead>
+            </table>
+
+    </div>
+  </div>
+ 
+  <div class="m-1">
+    <div class="blink_me">Welcome</div>
+  </div>
+
+  <div class=" ">
+    <div class="">
+      <div class="row dashboard-menu align-items-center">
+        <div class="col-4 mb-1" *ngFor="let p of appPages; let i = index" [class.lasticon]="(i % 2 == 0 && i!=0 && i%3 != 0 && i!=4 && i!=10) || i==5 || i==11" [class.fisticon]="i % 3 == 0">
+          <div class=" border-0"  (click)="go(p.url)">
+            <div class="text-center">
+              <div class="row">
+                <div class="col-12 mt-1">
+                  <img class="icon-img" [src]="p.icon" [ngStyle]="{'filter':p.filter}" [class.homework]="p.title=='homework'">
+                </div>
+                <div class="col-12 mt-2">
+                  <p >{{ p.title | translate }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+</ion-content>

@@ -1,0 +1,60 @@
+$colors:#00CCCC;
+.blink_me {
+    animation: blinker 1s linear infinite;
+    text-align: center;
+    color: $colors;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
+
+
+.dashboard-menu{
+    margin: 0!important;
+    .card-body{
+        padding: 0;
+        margin: 0;
+    }
+    p{
+        font-size: 11px;
+        padding: 0;
+        margin: 2% 0 2% 0;
+        font-weight: 500;
+        // background: $colors;
+        // color: #fff;
+    }
+    img{
+        width: 50%;
+        // margin-top: 10%;
+        
+    }
+
+    .homework{
+        width: 60%!important;
+    }
+
+    
+    
+// .fisticon{
+//     padding-right: 0.25rem!important;
+//     padding-left: 0!important;
+// }
+
+// .lasticon{
+//     padding-left: 0.25rem!important;
+//     padding-right: 0!important;
+// }
+    
+
+}
+.dashboard_avatar{
+    margin: auto;
+}
+
+
+
+
