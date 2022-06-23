@@ -23,12 +23,12 @@
             <thead>
               <tr>
                 <td  rowspan="2">
-                  <ion-avatar class="dashboard_avatar"><img *ngIf="storage.get(item.ADNO+'img')" [src]="storage.get(item.ADNO+'img')"><img *ngIf="!storage.get(item.ADNO+'img')" src="../../assets/imgs/student.png"></ion-avatar>
+                  <ion-avatar class="dashboard_avatar"><img *ngIf="storage.get(ADNO+'img')" [src]="storage.get(ADNO+'img')"><img *ngIf="!storage.get(ADNO+'img')" src="../../assets/imgs/student.png"></ion-avatar>
                 </td>
-                <td >{{ 'class' | translate }} :<span class="bolFont"> {{item.CLASSSEC}} </span></td>
+                <td >{{ 'name' | translate }} :<span class="bolFont"> {{name}} </span></td>
               </tr>
               <tr>
-                <td >{{ 'adno' | translate }}: <span class="bolFont">{{item.ADNO}} </span></td>
+                <td >{{ 'staff_code' | translate }}: <span class="bolFont">{{staff_code}} </span></td>
               </tr>
             </thead>
             </table>

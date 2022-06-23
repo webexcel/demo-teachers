@@ -16,12 +16,17 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardModule),
-    canActivate:[Guard]
+    // canActivate:[Guard]
+  },
+  {
+    path: 'circulars',
+    loadChildren: () => import('./circulars/circulars.module').then( m => m.CircularsModule),
+    // canActivate:[Guard]
   },
   {
     path: 'language',
     loadChildren: () => import('./language/language.module').then( m => m.LanguageModule),
-    canActivate:[Guard]
+    // canActivate:[Guard]
   }
 ];
 

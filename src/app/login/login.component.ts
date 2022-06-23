@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
 
 
 
-  enter_registered_mobile_number:any;
-  enter_admission_number:any;
+  usernametr:any;
+  passwordtr:any;
 
   
   constructor(private platform: Platform,  private appMinimize: AppMinimize,public loading:LoadingService,private translate: TranslateConfigService,private dataservice: DataService, private router: Router, private route: ActivatedRoute, private device: Device, public authservice: AuthService, public storage: StorageService, private alertCtrl: AlertController,) {
@@ -40,13 +40,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.translate.set()
-    this.translate.getparam('enter_registered_mobile_number').then(v=>this.enter_registered_mobile_number=v)
-    this.translate.getparam('enter_admission_number').then(v=>this.enter_admission_number=v)
+    this.translate.getparam('username').then(v=>this.usernametr=v)
+    this.translate.getparam('password').then(v=>this.passwordtr=v)
   }
 
 
-  replaceholder(t){
-    t.target.placeholder=this.enter_registered_mobile_number
+  replaceholderusername(t){
+    t.target.placeholder=this.usernametr
+  }
+
+  replaceholderpassword(t){
+    t.target.placeholder=this.passwordtr
   }
 
 

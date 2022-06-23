@@ -95,13 +95,14 @@ export class AppComponent {
       this.translate.getparam('loader_msg').then(v=>this.loadingconfig.text = v)
     })
 
+    this.dataservice.changeMenustatus(true)
     
-    this.disPlayStudentDetail =  this.storage.getjson('studentDetail')
-    if(this.disPlayStudentDetail){
-      this.dataservice.changeMenustatus(true)
-    }else{
-      this.dataservice.changeMenustatus(false)
-    }
+    // this.disPlayStudentDetail =  this.storage.getjson('studentDetail')
+    // if(this.disPlayStudentDetail){
+    //   this.dataservice.changeMenustatus(true)
+    // }else{
+    //   this.dataservice.changeMenustatus(false)
+    // }
     
   
 

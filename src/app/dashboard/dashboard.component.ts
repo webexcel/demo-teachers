@@ -18,6 +18,8 @@ import { DataService } from "../service/data.service";
 })
 export class DashboardComponent implements OnInit{
 
+name:any = "School Tree Demo"
+staff_code:any = 3
 
   public appPages = environment.pages;
   

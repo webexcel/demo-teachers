@@ -6,7 +6,14 @@
     "language":"Language",
     "logout":"Logout",
     "loader_msg":"Loading, please wait...",
-    
+    "username":"Username",
+    "password":"Password",
+    "name":"Name",
+    "staff_code":"Staff Code",
+    "send_circulars_to_lasses":"Send Circulars to classes",
+    "class":"Class",
+    "message":"Message",
+    "send_aLl_messages":"Send All Messages",
 
 
 
@@ -35,8 +42,7 @@
     "validate":"Validate",
     "save":"Save",
     "select":"Select",
-    "dismiss":"Dismiss",
-    "class":"Class",
+    "dismiss":"Dismiss",    
     "adno":"Ad.No",    
     "january":"January",
     "february":"February",
@@ -57,8 +63,7 @@
     "th":"Th",
     "fr":"Fr",
     "sa":"Sa",
-    "absent_dates":"Absent Dates",
-    "name":"Name",
+    "absent_dates":"Absent Dates",    
     "no_records_found":"No Records Found",
     "date":"Date",
     "subject":"Subject",

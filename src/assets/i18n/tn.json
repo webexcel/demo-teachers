@@ -1,22 +1,29 @@
 {
-    "en":"English",
-    "tn":"Tamil",
-    "login":"Login",
-    "dashboard":"Dashboard",    
-    "language":"Language",
-    "logout":"Logout",
-    "loader_msg":"Loading, please wait...",
+    "en":"ஆங்கிலம்",
+    "tn":"தமிழ்",
+    "login":"உள்நுழை",
+    "dashboard":"டாஷ்போர்டு",    
+    "language":"மொழி",
+    "logout":"வெளியேறு",
+    "loader_msg":"பதிவேறுகிறது, காத்திருக்கவும்...",
+    "username":"பயனர் பெயர்",
+    "password":"கடவுச்சொல்",
+    "name":"பெயர்",
+    "staff_code":"பணியாளர் குறியீடு",
+    "class":"வகுப்பு",
+    "message":"செய்தி",
+    "send_aLl_messages":"அனைத்து செய்திகளையும் அனுப்பவும்",
 
 
 
 
- 
 
 
 
 
+    
 
-
+    
     "enter_registered_mobile_number":"பதிவுசெய்யப்பட்ட மொபைல் எண்ணை உள்ளிடவும்",
     "circulars":"சுற்றறிக்கைகள்",
     "homework":"வீட்டு பாடம்",
@@ -35,8 +42,7 @@
     "validate":"சரிபார்க்கவும்",
     "save":"சேமிக்கவும்",
     "select":"தேர்ந்தெடு",
-    "dismiss":"நிராகரி",
-    "class":"வகுப்பு",
+    "dismiss":"நிராகரி",    
     "adno":"சே.எண்",
     "january":"ஜனவரி",
     "february":"பிப்ரவரி",
@@ -57,8 +63,7 @@
     "th":"வி",
     "fr":"வெ",
     "sa":"ச",
-    "absent_dates":"வராத தேதிகள்",
-    "name":"பெயர்",
+    "absent_dates":"வராத தேதிகள்",    
     "no_records_found":"எந்த பதிவுகளும் கண்டறியப்படவில்லை",
     "date":"தேதி",
     "subject":"பாடம்",

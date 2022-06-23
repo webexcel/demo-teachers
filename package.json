@@ -31,6 +31,8 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
+    "ionic-selectable": "^4.9.0",
+    "ionicons": "^6.0.1",
     "ngx-bootstrap": "^5.6.2",
     "ngx-ui-loader": "^8.0.0",
     "rxjs": "~6.5.1",
@@ -63,7 +65,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "typescript": "^3.4.5"
   },
   "description": "An Ionic project",
   "cordova": {
