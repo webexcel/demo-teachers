@@ -14,6 +14,17 @@
     "class":"Class",
     "message":"Message",
     "send_aLl_messages":"Send All Messages",
+    "send_homework_to_classes":"Send Homework to classes",
+    "personalized-messages":"Personalized Messages",
+    "send_message_to_students":"Send Message to Students",
+    "students":"Students",
+    "sended_message":"Sended Message",
+    "delete_circulars":"Do you want to delete the following Circulars",
+    "cancel":"Cancel",
+    "send_circulars":"Send the following Circulars",
+    "send":"Send",
+    "delete":"Delete",
+    "delete_homework":"Do you want to delete the following Homework",
 
 
 
@@ -37,8 +48,7 @@
     "id-card":"ID Card",
     "profile":"Profile",
     "online-class":"Online Class",    
-    "enter_admission_number":"Enter Admission Number\nName: ",
-    "cancel":"Cancel",
+    "enter_admission_number":"Enter Admission Number\nName: ",    
     "validate":"Validate",
     "save":"Save",
     "select":"Select",

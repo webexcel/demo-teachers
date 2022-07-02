@@ -4,7 +4,7 @@
     <ion-buttons slot="start">
       <ion-menu-button><ion-icon [ios]="'menu-sharp'" [md]="'menu-sharp'"></ion-icon></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ 'dashboard' | translate }}</ion-title>
+    <ion-title slot="start">{{ 'dashboard' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -25,10 +25,10 @@
                 <td  rowspan="2">
                   <ion-avatar class="dashboard_avatar"><img *ngIf="storage.get(ADNO+'img')" [src]="storage.get(ADNO+'img')"><img *ngIf="!storage.get(ADNO+'img')" src="../../assets/imgs/student.png"></ion-avatar>
                 </td>
-                <td >{{ 'name' | translate }} :<span class="bolFont"> {{name}} </span></td>
+                <td >{{ 'name' | translate }} :<span class="bolFont"> {{teachersDetail[0]['firstname']}} </span></td>
               </tr>
               <tr>
-                <td >{{ 'staff_code' | translate }}: <span class="bolFont">{{staff_code}} </span></td>
+                <td >{{ 'staff_code' | translate }}: <span class="bolFont">{{teachersDetail[0]['staff_id']}} </span></td>
               </tr>
             </thead>
             </table>

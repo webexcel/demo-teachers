@@ -152,6 +152,20 @@ ion-content{
   border-color: $colors;
 }
 
+.cardlist{
+  font-size: 90%!important;
+  .card_body{
+    margin-top: 0px!important ;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+    margin-bottom:1.25rem;
+    padding-bottom: 0.25rem!important;
+  }
+  .bodytable{
+    padding: 0!important;
+  }
+}
+
 
 
 

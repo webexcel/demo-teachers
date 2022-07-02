@@ -5,23 +5,20 @@
         <ion-icon [ios]="'menu-sharp'" [md]="'menu-sharp'"></ion-icon>
       </ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ 'circulars' | translate }}</ion-title>
+    <ion-title>{{ 'personalized-messages' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ 'circulars' | translate }}</ion-title>
+      <ion-title size="large">{{ 'personalized-messages' | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
-
-
-
-  <div class="circulars">
+  <div class="personalized">
     <div class="">
       <div class="card-header">
-        {{'send_circulars_to_lasses' | translate }}
+        {{'send_message_to_students' | translate }}
       </div>
       <div class="card-body card_body">
 
@@ -30,7 +27,7 @@
           <ion-item>
             <ion-label>{{ 'class' | translate }}</ion-label>
             <ionic-selectable name="class" item-content [(ngModel)]="select_datas.class" itemValueField="id"
-              itemTextField="name" [items]="classs" [canSearch]="true" [isMultiple]="true"
+              itemTextField="name" [items]="classs" [canSearch]="true" 
               (onChange)="classChange($event)" #class="ngModel" required>
               <ng-template ionicSelectableCloseButtonTemplate>
                 <ion-icon [md]="'close-circle'" [ios]="'close-circle'" style="font-size: 24px;"></ion-icon>
@@ -43,11 +40,20 @@
               [(ngModel)]="select_datas.s_date" #s_date="ngModel" required></ion-datetime>
           </ion-item>
           <ion-item>
+            <ion-label>{{ 'students' | translate }}</ion-label>
+            <ionic-selectable name="student" item-content [(ngModel)]="select_datas.student" itemValueField="id"
+              itemTextField="name" [items]="students" [canSearch]="true" [isMultiple]="true"
+               #student="ngModel" required>
+              <ng-template ionicSelectableCloseButtonTemplate>
+                <ion-icon [md]="'close-circle'" [ios]="'close-circle'" style="font-size: 24px;"></ion-icon>
+              </ng-template>
+            </ionic-selectable>
+          </ion-item>
+          <ion-item>
             <ion-label>{{ 'message' | translate }}</ion-label>
           </ion-item>
           <ion-item>
-            <ion-textarea type="text" name="message" (input)="select_datas.message = $event.target.value.trim()"
-              [(ngModel)]="select_datas.message" #message="ngModel" required>
+            <ion-textarea type="text" name="message" [(ngModel)]="select_datas.message" #message="ngModel" required>
             </ion-textarea>
           </ion-item>
           <div class="p-1">
@@ -59,17 +65,17 @@
     </div>
 
 
-    <div class="cardlist" *ngFor="let d of grpmes;">
+    <div class="cardlist">
       <div class="card-header py-1">
         <div class="row align-items-center">
           <div class="col">
-            {{d.Group_name}}
+            Satheesh (PREKG-A)
           </div>
           <div class="col text-right">
             <button type="button" class="btn bg-white mx-1">
-              <ion-icon class="text-success" [md]="'send-sharp'" (click)="movegrouptofinal([{id:d.ID}])"></ion-icon>
+              <ion-icon class="text-success" [md]="'send-sharp'"></ion-icon>
             </button>
-            <button type="button" class="btn bg-white ml-1" (click)="deletecirculars(d.ID)">
+            <button type="button" class="btn bg-white ml-1">
               <ion-icon class="text-danger" [md]="'trash-sharp'"></ion-icon>
             </button>
 
@@ -77,42 +83,16 @@
         </div>
       </div>
       <div class="card-body card_body border border-primary">
-        {{d.message}}
+        test
       </div>
     </div>
 
-    <div class="" *ngIf="grpmes.length>0">
+    <div class="">
       <div class="card-body card_body">
-        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="moveFinalgroupAll()">{{'send_aLl_messages' | translate}}</button>
-      </div>
-    </div>
-
-    <div class="cardlist" *ngIf="senditems.length>0">
-      <div class="card-header py-1">
-        <div class="row align-items-center">
-          <div class="col">
-            {{ 'sended_message' | translate }}
-          </div>
-        </div>
-      </div>
-      <div class="card-body card_body border border-primary p-0 bodytable">
-        <table *ngIf="senditems.length" class="table table-bordered">
-          <thead>
-            <tr>
-              <th style="
-              width: 40%;
-          ">{{ 'class' | translate }}</th>
-              <th>{{ 'message' | translate }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let s of senditems;">
-              <td>{{s.Group_name}}</td>
-              <td>{{s.message}}</td>
-            </tr>
-          </tbody>
-        </table>
+        <button type="button" class="btn btn-primary btn-lg btn-block">{{'send_aLl_messages' | translate}}</button>
       </div>
     </div>
   </div>
+
+
 </ion-content>

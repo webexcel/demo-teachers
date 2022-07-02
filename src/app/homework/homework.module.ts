@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {CircularsComponent} from './circulars.component';
-import {CircularsRoutingModule} from './circulars-routing.module';
+import {HomeworkComponent} from './homework.component';
+import {HomeworkRoutingModule} from './homework-routing.module';
 import { IonicModule } from '@ionic/angular';
 import { TranModule } from "../tran.module";
 import { IonicSelectableModule } from 'ionic-selectable';
 import { FormsModule } from "@angular/forms";
 
 
-
 @NgModule({
-  declarations: [CircularsComponent],
+  declarations: [HomeworkComponent],
   imports: [
     CommonModule,
-    CircularsRoutingModule,
+    HomeworkRoutingModule,
     IonicModule,
     TranModule,
     IonicSelectableModule,
     FormsModule
   ],
 })
-export class CircularsModule { }
+export class HomeworkModule { }

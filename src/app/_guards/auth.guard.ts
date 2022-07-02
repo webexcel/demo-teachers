@@ -9,7 +9,7 @@ export class Guard implements CanActivate {
     
   }
     async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-      let val = this.storage.getjson('studentDetail')
+      let val = this.storage.getjson('teachersDetail')
       if(!val){
         this.router.navigate(['login']);
        }else{
@@ -24,7 +24,7 @@ export class loginGuard implements CanActivate {
     
   }
     async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-      let val = this.storage.getjson('studentDetail')
+      let val = this.storage.getjson('teachersDetail')
       if(val){
         this.router.navigate(['dashboard']);
       }else{

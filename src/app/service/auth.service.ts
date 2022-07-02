@@ -12,32 +12,17 @@ export class AuthService {
 
 
   post(url,data){
-    let httpHeaders = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Access-Control-Allow-Origin','*')
-    let options = {
-        headers: httpHeaders
-    };
-    
      return this.http.post(`${this.apiBaseUrl}${url}`,data,{})
+  }
+
+  get(url){
+    return this.http.get(`${this.apiBaseUrl}${url}`,{})
   }
 
   download(url: string): Observable<Blob> {
     return this.http.get(url, {
       responseType: 'blob'
     })
-  }
-
-  get(url){
-    let httpHeaders = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Access-Control-Allow-Origin','*')
-    let options = {
-        headers: httpHeaders
-    };
-    
-
-     return this.http.get(url,options)
   }
 
   pdfto64(pdf){

@@ -4,7 +4,7 @@ import { Device } from '@ionic-native/device/ngx';
 import { AuthService } from '../service/auth.service';
 import { StorageService } from "../service/storage.service";
 import { AlertController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { DataService } from "../service/data.service";
 import {TranslateConfigService} from '../service/translate-config.service';
 import { LoadingService } from "../service/loading.service";
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   passwordtr:any;
 
   
-  constructor(private platform: Platform,  private appMinimize: AppMinimize,public loading:LoadingService,private translate: TranslateConfigService,private dataservice: DataService, private router: Router, private route: ActivatedRoute, private device: Device, public authservice: AuthService, public storage: StorageService, private alertCtrl: AlertController,) {
+  constructor(private platform: Platform,  private appMinimize: AppMinimize,public loading:LoadingService,private translate: TranslateConfigService,private dataservice: DataService, private router: Router, private device: Device, public authservice: AuthService, public storage: StorageService, private alertCtrl: AlertController,) {
     this.platform.backButton.subscribe(() => {
       let p = this.storage.get('page')
       if(p=='login'){
@@ -65,12 +65,19 @@ export class LoginComponent implements OnInit {
    manufacturer_model:this.device.cordova,
    os_version:this.device.version,
    deviceid:this.device.serial,
-      mobile_no:this.authForm.username,
+   username:this.authForm.username,
+   password:this.authForm.password,
       app_version_code: this.app_versionCode
     }
-    this.authservice.post('mobileinstallsnew', value).subscribe(result => {
-      
+    this.authservice.post('userLogin', value).subscribe(result => {
       this.loading.dismissAll()
+      if(result['status']){
+        if(result['data'].length>0){
+          this.storage.addjson('teachersDetail',result['data'])
+          this.dataservice.changeMenustatus(true)
+          this.router.navigate(['']);
+        }
+      }
     }, err => {
       this.loading.dismissAll()
     })

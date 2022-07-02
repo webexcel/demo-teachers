@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {CircularsComponent} from './circulars.component';
-import {CircularsRoutingModule} from './circulars-routing.module';
+import {PersonalizedComponent} from './personalized.component';
+import {PersonalizedRoutingModule} from './personalized-routing.module';
 import { IonicModule } from '@ionic/angular';
 import { TranModule } from "../tran.module";
 import { IonicSelectableModule } from 'ionic-selectable';
@@ -9,15 +9,16 @@ import { FormsModule } from "@angular/forms";
 
 
 
+
 @NgModule({
-  declarations: [CircularsComponent],
+  declarations: [PersonalizedComponent],
   imports: [
     CommonModule,
-    CircularsRoutingModule,
+    PersonalizedRoutingModule,
     IonicModule,
     TranModule,
     IonicSelectableModule,
     FormsModule
-  ],
+  ]
 })
-export class CircularsModule { }
+export class PersonalizedModule { }
