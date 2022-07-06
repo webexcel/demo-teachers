@@ -35,12 +35,14 @@ teachersDetail:any = this.storage.getjson('teachersDetail')
       this.translate.set()
     })
     this.getosversion()
-    this.getClass()
+    
   }
 
    go(url){
     this.router.navigate([url])
    }
+
+   
 
    getosversion(){
     this.loading.present()
@@ -60,23 +62,7 @@ teachersDetail:any = this.storage.getjson('teachersDetail')
       }
     },err=>{
       this.loading.dismissAll()
-      console.log(err)
-    })
-   }
-
-   getClass(){
-    this.loading.present()
-    let data = {
-      Is_Admin: this.teachersDetail[0]['Is_Admin'],
-      staff_id: this.teachersDetail[0]['staff_id']
-    }
-    this.authservice.post('getClass',data).subscribe(res=>{
-      this.loading.dismissAll();
-      if(res['status']){
-        this.storage.addjson('classlist',res['data'])
-      }
-    },err=>{
-      this.loading.dismissAll();
+     
       console.log(err)
     })
    }

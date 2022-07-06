@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   usernametr:any;
   passwordtr:any;
-
+  teachersDetail:any = []
   
   constructor(private platform: Platform,  private appMinimize: AppMinimize,public loading:LoadingService,private translate: TranslateConfigService,private dataservice: DataService, private router: Router, private device: Device, public authservice: AuthService, public storage: StorageService, private alertCtrl: AlertController,) {
     this.platform.backButton.subscribe(() => {
@@ -73,15 +73,38 @@ export class LoginComponent implements OnInit {
       this.loading.dismissAll()
       if(result['status']){
         if(result['data'].length>0){
+          this.teachersDetail = result['data']
           this.storage.addjson('teachersDetail',result['data'])
-          this.dataservice.changeMenustatus(true)
-          this.router.navigate(['']);
+          
+          
+      this.getClass()
         }
       }
     }, err => {
       this.loading.dismissAll()
     })
   }
+
+  
+
+   getClass(){
+    this.loading.present()
+    let data = {
+      Is_Admin: this.teachersDetail[0]['Is_Admin'],
+      staff_id: this.teachersDetail[0]['staff_id']
+    }
+    this.authservice.post('getclass',data).subscribe(res=>{
+      this.loading.dismissAll();
+      if(res['status']){
+        this.storage.addjson('classlist',res['data'])
+      }
+      this.dataservice.changeMenustatus(true)
+      this.router.navigate(['']);
+    },err=>{
+      this.loading.dismissAll();
+      console.log(err)
+    })
+   }
 
 
  

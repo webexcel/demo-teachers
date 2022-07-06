@@ -6,7 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule  } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS  } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TranModule } from "./tran.module";
@@ -20,6 +20,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { AppMinimize } from '@ionic-native/app-minimize/ngx';
+import { JwtInterceptor } from './service/jwt.interceptor';
 
 
 
@@ -45,7 +46,11 @@ import { AppMinimize } from '@ionic-native/app-minimize/ngx';
   exports: [
     
 ],
-  providers: [LoadingService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, StatusBar, SplashScreen,AppMinimize,Device],
+  providers: [LoadingService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true
+  }, StatusBar, SplashScreen,AppMinimize,Device],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

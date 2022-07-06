@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
+import { IonicSelectableComponent } from 'ionic-selectable';
 import {TranslateConfigService} from '../service/translate-config.service';
 import { Router} from '@angular/router';
 import { Platform } from '@ionic/angular';
@@ -12,7 +13,7 @@ import { AlertController} from '@ionic/angular';
   styleUrls: ['./homework.component.scss'],
 })
 export class HomeworkComponent implements OnInit {
-
+  @ViewChild('portComponent',{static:false}) portComponent: IonicSelectableComponent;
   classs: any[];
   subjects:any[];
   select_datas: any={};
@@ -38,12 +39,27 @@ export class HomeworkComponent implements OnInit {
     this.getSaveHomework()
   }
 
+  toggleItems(status) {
+    if(status){
+      this.portComponent.toggleItems(false);
+      this.portComponent.toggleItems(status); 
+      this.confirm() 
+    }else{
+      this.portComponent.toggleItems(status);
+    }
+  }
+
+  confirm() {
+    this.portComponent.confirm();
+    this.portComponent.close();
+  }
+
   classChange(event){
   }
 
   getSaveHomework(){
     this.loading.present()
-    this.authservice.post('getSaveHomework',{staff_id:this.storage.getjson('teachersDetail')[0]['staff_id']}).subscribe(res=>{
+    this.authservice.post('getSaveHomework',{staff_id:this.storage.getjson('teachersDetail')[0]['staff_id'],classid:this.authservice.classids()}).subscribe(res=>{
       this.loading.dismissAll()
       if(res['status']){
         this.gethw = res['data']

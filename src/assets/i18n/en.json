@@ -18,13 +18,19 @@
     "personalized-messages":"Personalized Messages",
     "send_message_to_students":"Send Message to Students",
     "students":"Students",
-    "sended_message":"Sended Message",
+    "sended_message":"Sent Message",
     "delete_circulars":"Do you want to delete the following Circulars",
     "cancel":"Cancel",
     "send_circulars":"Send the following Circulars",
     "send":"Send",
     "delete":"Delete",
     "delete_homework":"Do you want to delete the following Homework",
+    "select_list_of_absent_students":"Select list of Absent Students",
+    "delete_personalized":"Do you want to delete the following message",
+    "send_personalized":"Confirm to send the following message",
+    "delete_attendance":"Do you want to delete the following message",
+    "send_attendance":"Confirm to send the following message",
+    
 
 
 

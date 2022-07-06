@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
+import { IonicSelectableComponent } from 'ionic-selectable';
 import {TranslateConfigService} from '../service/translate-config.service';
 import {AuthService} from "../service/auth.service";
 import {StorageService} from '../service/storage.service';
@@ -6,6 +7,7 @@ import {LoadingService} from '../service/loading.service';
 import { Router} from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { AlertController} from '@ionic/angular';
+
 
 @Component({
   selector: 'app-circulars',
@@ -22,6 +24,7 @@ export class CircularsComponent implements OnInit {
   send_circulars:any;
   send:any;
   delete:any;
+  @ViewChild('portComponent',{static:false}) portComponent: IonicSelectableComponent;
 
   constructor(public alertCtrl: AlertController,private platform: Platform, private router: Router,private translate: TranslateConfigService,public authservice:AuthService, public storage:StorageService, public loading:LoadingService) {
     this.platform.backButton.subscribe(() => {
@@ -42,6 +45,20 @@ export class CircularsComponent implements OnInit {
     this.getgroupMessage()
   }
 
+  toggleItems(status) {
+    if(status){
+      this.portComponent.toggleItems(false);
+      this.portComponent.toggleItems(status); 
+      this.confirm() 
+    }else{
+      this.portComponent.toggleItems(status);
+    }
+  }
+
+  confirm() {
+    this.portComponent.confirm();
+    this.portComponent.close();
+  }
 
   classChange(event){
     
@@ -64,7 +81,7 @@ export class CircularsComponent implements OnInit {
 
   getgroupMessage(){
     this.loading.present()
-    this.authservice.post('getgroupMessage',{staff_id:this.storage.getjson('teachersDetail')[0]['staff_id']}).subscribe(res=>{
+    this.authservice.post('getgroupMessage',{staff_id:this.storage.getjson('teachersDetail')[0]['staff_id'],classid:this.authservice.classids()}).subscribe(res=>{
       this.loading.dismissAll()
       if(res['status']){
         this.grpmes = res['data']

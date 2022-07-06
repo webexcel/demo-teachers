@@ -26,11 +26,34 @@
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate class="border border-primary">
           <ion-item>
             <ion-label>{{ 'class' | translate }}</ion-label>
-            <ionic-selectable name="class" item-content [(ngModel)]="select_datas.class" itemValueField="id"
-              itemTextField="name" [items]="classs" [canSearch]="true" [isMultiple]="true"
+            <ionic-selectable #portComponent name="class" item-content [(ngModel)]="select_datas.class" itemValueField="id"
+              itemTextField="name" [items]="classs" [canSearch]="true" [hasVirtualScroll]="true" [isMultiple]="true"
               (onChange)="classChange($event)" #class="ngModel" required>
               <ng-template ionicSelectableCloseButtonTemplate>
                 <ion-icon [md]="'close-circle'" [ios]="'close-circle'" style="font-size: 24px;"></ion-icon>
+              </ng-template>
+              <ng-template ionicSelectableFooterTemplate>
+                <ion-toolbar>
+                  <ion-row>
+                    <ion-col [size]="4">
+                      <ion-button expand="full"
+                        (click)="toggleItems(true)">
+                        Select All
+                      </ion-button>
+                    </ion-col>
+                    <ion-col [size]="4">
+                      <ion-button expand="full"
+                        (click)="toggleItems(false)">
+                        Deselect All
+                      </ion-button>
+                    </ion-col>
+                    <ion-col [size]="4">
+                      <ion-button expand="full" (click)="confirm()">
+                        OK
+                      </ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-toolbar>
               </ng-template>
             </ionic-selectable>
           </ion-item>
