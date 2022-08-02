@@ -37,15 +37,16 @@
 <!--Content starts-->
 <div class="content flex">
   <form name="form" (ngSubmit)="f.form.valid && submitForm()" #f="ngForm" novalidate>
-    <input type="text" name="username" placeholder="{{ usernametr }}" onfocus="this.placeholder = ''"
+    <input type="text" class="border" name="username" placeholder="{{ usernametr }}" onfocus="this.placeholder = ''"
       (blur)="replaceholderusername($event)" 
       [(ngModel)]="authForm.username" #username="ngModel" required 
-      [ngClass]="{ 'is-invalid': f.submitted && username.invalid }" />
-
-      <input type="password" name="password" placeholder="{{ passwordtr }}" onfocus="this.placeholder = ''"
+      [ngClass]="{ 'border-danger': f.submitted && username.invalid }" />
+      <span *ngIf="f.submitted && username.invalid" class="text-danger">Enter Username</span>
+      <input type="password" class="border" name="password" placeholder="{{ passwordtr }}" onfocus="this.placeholder = ''"
       (blur)="replaceholderpassword($event)" 
       [(ngModel)]="authForm.password" #password="ngModel" required 
-      [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" />
+      [ngClass]="{ 'border-danger': f.submitted && password.invalid }" />
+      <span *ngIf="f.submitted && password.invalid" class="text-danger">Enter Password</span>
     <button class="login-btn" type="submit">{{ 'login' | translate }}</button>
   </form>
 </div>

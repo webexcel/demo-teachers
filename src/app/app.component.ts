@@ -10,7 +10,9 @@ import { DataService } from "./service/data.service";
 import { setTheme } from 'ngx-bootstrap/utils';
 import {TranslateConfigService} from './service/translate-config.service';
 
-
+import { AuthService } from './service/auth.service';
+import { LoadingService } from './service/loading.service';
+import { FilesService } from './service/files.service';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +20,7 @@ import {TranslateConfigService} from './service/translate-config.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  ios:any = false
   public fireBaseRegistrationID: any;
   public getStudentDetails: any = [];
   public app_versionCode: any;
@@ -58,7 +61,7 @@ export class AppComponent {
     "minTime": 300
   }
   // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor( private translate: TranslateConfigService,private dataservice:DataService, public router:Router,private platform: Platform, private statusBar: StatusBar, private splashScreen: SplashScreen,  private storage:StorageService) {
+  constructor(private serfile:FilesService,public loading:LoadingService, private translate: TranslateConfigService,private dataservice:DataService, public router:Router,private platform: Platform, private statusBar: StatusBar, private splashScreen: SplashScreen,  private storage:StorageService,public authservice: AuthService) {
       setTheme('bs4')
       router.events.subscribe(val => {
         this.storage.remove('page')
@@ -86,6 +89,8 @@ export class AppComponent {
       this.statusBar.styleDefault();
       //this.checkfile();
       this.splashScreen.hide();
+      this.ios = this.authservice.isiso()
+      this.serfile.checkdir()
       
     });
 
@@ -95,14 +100,34 @@ export class AppComponent {
       this.translate.getparam('loader_msg').then(v=>this.loadingconfig.text = v)
     })
 
-    this.dataservice.changeMenustatus(true)
+   // this.dataservice.changeMenustatus(true)
     
-    // this.disPlayStudentDetail =  this.storage.getjson('studentDetail')
-    // if(this.disPlayStudentDetail){
-    //   this.dataservice.changeMenustatus(true)
-    // }else{
-    //   this.dataservice.changeMenustatus(false)
-    // }
+    this.disPlayStudentDetail =  this.storage.getjson('teachersDetail')
+    if(this.disPlayStudentDetail){
+        this.loading.present()
+        let data = {
+          Is_Admin: this.disPlayStudentDetail[0]['Is_Admin'],
+          staff_id: this.disPlayStudentDetail[0]['staff_id']
+        }
+        this.authservice.post('getclass',data).subscribe(res=>{
+          this.loading.dismissAll();
+          if(res['status']){
+            this.storage.addjson('classlist',res['data'])
+          }else{
+            this.storage.addjson('classlist',[])
+          }
+          this.dataservice.changeMenustatus(true)
+          this.router.navigate(['']);
+        },err=>{
+          this.storage.addjson('classlist',[])
+          this.loading.dismissAll();
+          console.log(err)
+        })
+
+      this.dataservice.changeMenustatus(true)
+    }else{
+      this.dataservice.changeMenustatus(false)
+    }
     
   
 

@@ -13,6 +13,7 @@ import { AlertController} from '@ionic/angular';
   styleUrls: ['./homework.component.scss'],
 })
 export class HomeworkComponent implements OnInit {
+  ios:any=false
   @ViewChild('portComponent',{static:false}) portComponent: IonicSelectableComponent;
   classs: any[];
   subjects:any[];
@@ -28,6 +29,7 @@ export class HomeworkComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.ios=this.authservice.isiso()
     this.translate.set()
     this.translate.getparam('delete_circulars').then(v=>this.delete_homework=v)
     this.translate.getparam('cancel').then(v=>this.cancel=v)

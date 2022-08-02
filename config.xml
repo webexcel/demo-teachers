@@ -24,7 +24,10 @@
     <preference name="AndroidXEnabled" value="true" />
     <preference name="GradlePluginGoogleServicesEnabled" value="true" />
     <preference name="GradlePluginGoogleServicesVersion" value="4.3.8" />
+    <preference name="AndroidPersistentFileLocation" value="Internal" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="iosPersistentFileLocation" value="Library" />
+    <preference name="iosPersistentFileLocation" value="Compatibility" />
     <allow-navigation href="http://app/*" />
     <allow-navigation href="https://app/*" />
     <allow-navigation href="http://localhost/*" />

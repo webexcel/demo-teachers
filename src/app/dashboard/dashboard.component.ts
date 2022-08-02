@@ -16,7 +16,7 @@ import {LoadingService} from '../service/loading.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit{
-
+  ios:any=false
 teachersDetail:any = this.storage.getjson('teachersDetail')
 
   public appPages = environment.pages;
@@ -31,6 +31,7 @@ teachersDetail:any = this.storage.getjson('teachersDetail')
   }
 
   ngOnInit() {
+    this.ios=this.authservice.isiso()
     this.dataservice.currentMenustatus.subscribe(index => {
       this.translate.set()
     })

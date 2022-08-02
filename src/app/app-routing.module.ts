@@ -42,6 +42,16 @@ const routes: Routes = [
     path: 'attendance',
     loadChildren: () => import('./attendance/attendance.module').then( m => m.AttendanceModule),
     canActivate:[Guard]
+  },
+  {
+    path: 'flash',
+    loadChildren: () => import('./flash/flash.module').then( m => m.FlashModule),
+    canActivate:[Guard]
+  },
+  {
+    path: 'study-material',
+    loadChildren: () => import('./study-material/study-material.module').then( m => m.StudyMaterialModule),
+    canActivate:[Guard]
   }
 ];
 

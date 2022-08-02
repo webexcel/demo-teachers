@@ -97,10 +97,13 @@ export class LoginComponent implements OnInit {
       this.loading.dismissAll();
       if(res['status']){
         this.storage.addjson('classlist',res['data'])
+      }else{
+        this.storage.addjson('classlist',[])
       }
       this.dataservice.changeMenustatus(true)
       this.router.navigate(['']);
     },err=>{
+      this.storage.addjson('classlist',[])
       this.loading.dismissAll();
       console.log(err)
     })

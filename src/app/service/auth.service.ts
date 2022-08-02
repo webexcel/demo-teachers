@@ -3,13 +3,15 @@ import {HttpClient,HttpHeaders} from '@angular/common/http';
 import { environment } from "../../environments/environment";
 import { Observable } from 'rxjs/internal/Observable';
 import { StorageService } from "./storage.service";
+import { Platform } from '@ionic/angular';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   apiBaseUrl:any = environment.apiBaseUrl;
-  constructor(private http:HttpClient,private storage:StorageService) { }
+  constructor(private iab: InAppBrowser,private platform: Platform,private http:HttpClient,private storage:StorageService) { }
 
 
   post(url,data){
@@ -57,5 +59,21 @@ export class AuthService {
     })
       return promise
       
+  }
+
+  isiso(){
+    if(this.platform.is('ios')){
+      return true
+    }else{
+      return false
+    }
+  }
+
+  open(url){
+    const options: InAppBrowserOptions={
+      zoom:'no'
+    }
+        const browser = this.iab.create(url,'_system',options); 
+         browser.on('')
   }
 }

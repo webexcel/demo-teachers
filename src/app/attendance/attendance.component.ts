@@ -13,6 +13,7 @@ import { AlertController} from '@ionic/angular';
   styleUrls: ['./attendance.component.scss'],
 })
 export class AttendanceComponent implements OnInit {
+  ios:any=false
   @ViewChild('portComponent',{static:false}) portComponent: IonicSelectableComponent;
   senditems:any=[];
   grpmes:any = [];
@@ -32,6 +33,7 @@ export class AttendanceComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.ios=this.authservice.isiso()
     this.translate.set()
     this.translate.getparam('delete_attendance').then(v=>this.delete_attendance=v)
     this.translate.getparam('cancel').then(v=>this.cancel=v)
