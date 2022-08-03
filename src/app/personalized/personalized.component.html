@@ -83,11 +83,44 @@
           
          
           <ion-item>
-            <ion-textarea type="text" name="message" [(ngModel)]="select_datas.message" #message="ngModel" required>
+            <ion-textarea type="text" name="message" [(ngModel)]="select_datas.message" #message="ngModel" placeholder="Type Here" [required]="select_datas.filename.length==0">
             </ion-textarea>
           </ion-item>
           <span *ngIf="f.submitted && message.invalid" class="text-danger">Enter Message</span> 
           <ion-item>
+            <div class="row w-100 align-items-center text-center">
+              <div class="col-6" *ngIf="select_datas.filename.length==0">
+                <img alt="" style="width: 30px;" src="../../assets/imgs/speakers/attachment.png" (click)="open()">
+              </div>
+              <div class="col-6" *ngIf="select_datas.filename.length==0">
+                <img alt="" style="width: 30px;" src="../../assets/imgs/speakers/microphone.png" (click)="startRecord()" *ngIf="!recording">
+                <img alt="" style="width: 30px; filter: invert(13%) sepia(100%) saturate(6859%) hue-rotate(358deg) brightness(119%) contrast(120%);" src="../../assets/imgs/speakers/microphone-off.png"  (click)="stopRecord()" *ngIf="recording"> <span style="color: #ff0000;" *ngIf="recording" (click)="stopRecord()"> Recording</span>
+              </div>
+              <!-- <div class="col-12" *ngIf="select_datas.filename.length>0">
+                <hr class="bg-info">
+              </div> -->
+              <div class="col-10" *ngIf="select_datas.filename.length>0 && select_datas.ftype!='mp3'">
+                {{select_datas.filename}}
+              </div>
+              <div class="col-10" *ngIf="select_datas.filename.length>0 && select_datas.ftype=='mp3'">
+                <audio controls controlsList="noplaybackrate nodownload" class="w-100">
+                  <source [src]="select_datas.image" type="audio/mpeg"></audio>
+              </div>
+              <div class="col-2" *ngIf="select_datas.filename.length>0">
+                <button type="button" class="btn btn-danger" (click)="deletefile()"><ion-icon [ios]="'trash-sharp'" [md]="'trash-sharp'"  ></ion-icon></button>
+              </div>
+              <!-- <div class="col-12">
+                <hr class="bg-info">
+              </div>
+              <div class="col-12">
+                <button type="button" class="btn btn-danger" (click)="deletefile()"><ion-icon [ios]="'trash-sharp'" [md]="'trash-sharp'"  ></ion-icon> Delete</button>
+              </div> -->
+              <div class="col-12 text-danger" *ngIf="error" >
+                only allow jpg, jpeg, png, pdf, mp3.
+              </div>
+            </div>
+          </ion-item>
+          <!-- <ion-item>
             <div class="row w-100 align-items-center text-center">
               <div class="col-8">
                 {{select_datas.filename}}
@@ -113,7 +146,7 @@
           <ion-item *ngIf="select_datas.ftype=='mp3'">
             <audio controls controlsList="noplaybackrate nodownload">
             <source [src]="select_datas.image" type="audio/mpeg"></audio>
-          </ion-item>
+          </ion-item> -->
           <div class="p-1">
             <button type="submit" class="btn btn-primary">{{'save' | translate}}</button>
           </div>

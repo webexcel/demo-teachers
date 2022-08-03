@@ -62,7 +62,7 @@ export class PersonalizedComponent implements OnInit {
     this.select_datas.staff_id = this.storage.getjson('teachersDetail')[0]['staff_id']
     this.select_datas.image = ""
     this.select_datas.ftype = ""
-    this.select_datas.filename="Select File"
+    this.select_datas.filename=""
   }
 
   classChange(event){
@@ -212,7 +212,7 @@ export class PersonalizedComponent implements OnInit {
           let l: any = res.split('.')
           console.log(l)
           l = l[l.length - 1].toLowerCase()
-          if (l == 'jpg' || l == 'jpeg' || l == 'png' || l=='pdf' || l=='mp3') {
+          if (l == 'jpg' || l == 'jpeg' || l == 'png' || l=='pdf' || l=='mp3' || l=='xls' || l=='xlsx') {
             this.select_datas.ftype = l
             this.error = false
             if(l=='mp3'){
@@ -240,13 +240,8 @@ export class PersonalizedComponent implements OnInit {
       f = f.split('.')
       f = f[f.length-1].toLowerCase()
       console.log(f)
-      if(f!='pdf'){
-        if(f!='mp3'){
-          return true
-        }else{
-          return false
-        }
-        
+      if(f!='pdf' && f!='mp3' && f!='xls' && f!='xlsx'){
+        return true
       }else{
         return false
       }
@@ -262,6 +257,21 @@ export class PersonalizedComponent implements OnInit {
       f = f.split('.')
       f = f[f.length-1].toLowerCase()
       if(f=='mp3'){
+        return true
+      }else{
+        return false
+      }
+    }else{
+      return false
+    }
+    
+  }
+
+  checkxls(f){
+    if(f){
+      f = f.split('.')
+      f = f[f.length-1].toLowerCase()
+      if(f=='xls' || f=='xlsx'){
         return true
       }else{
         return false
@@ -303,7 +313,7 @@ export class PersonalizedComponent implements OnInit {
       this.audio = this.media.create(this.Path);
       this.select_datas.ftype = ''
       this.select_datas.image = ''
-      this.select_datas.filename = 'Select File'
+      this.select_datas.filename = ''
     this.audio.startRecord();
     this.recording = true;
   }
@@ -329,7 +339,7 @@ export class PersonalizedComponent implements OnInit {
   deletefile(){
     this.select_datas.ftype = ''
       this.select_datas.image = ''
-      this.select_datas.filename = 'Select File'
+      this.select_datas.filename = ''
   }
 
 
